@@ -20,5 +20,5 @@ There's not yet any equivalent to a bash profile (sorry!) but I'm working on it!
 * interpret keypress (e.g arrow keys, tab)
 * command and argument autocomplete
 * initialisation from profile
-* blobbing
+* globbing
 * redirecting stdout to files
