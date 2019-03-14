@@ -1,5 +1,5 @@
 # slush
-Silly Little Underdeveloped SHell
+**s**illy **l**ittle **u**nderdeveloped **sh**ell
 
 ## What?
 This is a shell that I am making just to test myself and get a better understanding of the concepts it involves, such as forking, piping and bits of low-level memory management. It is by no means extraordinary or special and it is fiercely underdeveloped. It's also not greatly robust, nor does it offer any amazing features. It just does what it says on the tin... just about.
