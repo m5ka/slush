@@ -1,3 +1,4 @@
+#define INPUT_BUFSIZE 1024
 #define TOK_BUFSIZE 64
 #define TOK_DELIM " \t\r\n\a"
 
@@ -9,6 +10,11 @@
 #define KMAG  "\x1B[35m"
 #define KCYN  "\x1B[36m"
 #define KWHT  "\x1B[37m"
+
+/* input.c */
+void stdin_prompt();
+char* read_in();
+char **parse_in(char *line, int *argc);
 
 /* builtins.c */
 int cmd_exit(char **args);
