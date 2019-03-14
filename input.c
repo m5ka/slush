@@ -9,10 +9,34 @@ void stdin_prompt() {
 }
 
 char* read_in() {
-    char *line = NULL;
-    ssize_t bufsize = 0;
-    getline(&line, &bufsize, stdin);
-    return line;
+    int bufsize = INPUT_BUFSIZE, position = 0;
+    char *buffer = malloc(bufsize * sizeof(char));
+    int c;
+
+    if(!buffer) {
+        fprintf(stderr, "slush: could not allocate input buffer");
+        exit(EXIT_FAILURE);
+    }
+
+    while(1) {
+        c = getchar();
+        if(c == EOF || c == '\n') {
+            buffer[position] = '\0';
+            return buffer;
+        } else {
+            buffer[position] = c;
+        }
+        position++;
+
+        if(position >= bufsize) {
+            bufsize += INPUT_BUFSIZE;
+            buffer = realloc(buffer, bufsize);
+            if(!buffer) {
+                fprintf(stderr, "slush: could not reallocate input buffer");
+                exit(EXIT_FAILURE);
+            }
+        }
+    }
 }
 
 char **parse_in(char *line, int *argc) {
