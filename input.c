@@ -1,11 +1,13 @@
 #include "slush.h"
 
 #include <stdio.h>          // printf, getline
-#include <stdlib.h>         // malloc, realloc, free
+#include <stdlib.h>         // malloc, realloc, free, getenv
 #include <string.h>         // strtok
+#include <unistd.h>         // getcwd
 
 void stdin_prompt() {
-    printf(" %s$%s ", KGRN, KNRM);
+    getcwd(cwd, sizeof(cwd));
+    printf(" %s%s$%s ", KGRN, cwd, KNRM);
 }
 
 char* read_in() {

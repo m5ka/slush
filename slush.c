@@ -13,6 +13,9 @@ void slush_loop() {
         stdin_prompt();
         line = read_in(line);
         args = parse_in(line, &argc);
+
+        resolve_vars(args, argc);
+        
         status = action(args, argc);
 
         free(line);

@@ -1,5 +1,5 @@
-slush: slush.o input.o action.o builtins.o
-	gcc -o slush slush.o input.o action.o builtins.o && rm *.o
+slush: slush.o input.o action.o builtins.o variables.o
+	gcc -o slush slush.o input.o action.o builtins.o variables.o && rm *.o
 
 slush.o: slush.c
 	gcc -o slush.o -c slush.c
@@ -12,3 +12,6 @@ action.o: action.c
 
 builtins.o: builtins.c
 	gcc -o builtins.o -c builtins.c
+
+variables.o: variables.c
+	gcc -o variables.o -c variables.c

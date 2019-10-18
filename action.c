@@ -131,7 +131,7 @@ int action(char **args, int argc) {
 
     for(int i = 0; i < count_builtins(); i++) {
         if(strcmp(args[0], builtin_cmd_name[i]) == 0) {
-            return (*builtin_cmd_func[i])(args);
+            return (*builtin_cmd_func[i])(args, argc);
         }
     }
 

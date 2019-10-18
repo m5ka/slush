@@ -11,21 +11,28 @@
 #define KCYN  "\x1B[36m"
 #define KWHT  "\x1B[37m"
 
+#define CWD_MAX 128
+char cwd[CWD_MAX];
+
 /* input.c */
 void stdin_prompt();
 char* read_in();
 char **parse_in(char *line, int *argc);
 
 /* builtins.c */
-int cmd_exit(char **args);
-int cmd_help(char **args);
+int cmd_exit(char **args, int argc);
+int cmd_cd(char **args, int argc);
+int cmd_help(char **args, int argc);
 int count_builtins();
 
 extern char *builtin_cmd_name[];
-extern int (*builtin_cmd_func[]) (char**);
+extern int (*builtin_cmd_func[]) (char**, int);
 
 /* action.c */
 int execute_pipe(char **args1, int argc1, char **args2, int argc2);
 int prepare_pipe(char **args, int argc, int pipe_index);
 int execute_cmd(char **args, int argc);
 int action(char **args, int argc);
+
+/* variables.c */
+void resolve_vars(char **args, int argc);
