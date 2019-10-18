@@ -93,8 +93,7 @@ int execute_cmd(char **args, int argc) {
     pid_t pid;
     int status;
     
-    pid = fork();
-    if(pid == 0) {
+    if(!(pid = fork())) {
         // Child process
         if(execvp(args[0], args) == -1) {
             perror("slush");
@@ -120,12 +119,10 @@ int action(char **args, int argc) {
     for(int n = 0; n < argc; n++) {
         if(strcmp(args[n], "|") == 0) {
             // Make sure there are arguments after the pipe
-            if(argc > (n+1)) {
+            if(argc > n+1)
                 return prepare_pipe(args, argc, (n+1));
-            } else {
-                fprintf(stderr, "slush: expecting a command but instead found end of statement");
-                return 1;
-            }
+            fprintf(stderr, "slush: expecting a command but instead found end of statement");
+            return 1;
         }
     }
 
