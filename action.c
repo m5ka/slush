@@ -117,7 +117,7 @@ int action(char **args, int argc) {
     }
 
     for(int n = 0; n < argc; n++) {
-        if(strcmp(args[n], "|") == 0) {
+        if(*(args[n]) == '|') {
             // Make sure there are arguments after the pipe
             if(argc > n+1)
                 return prepare_pipe(args, argc, (n+1));

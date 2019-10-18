@@ -7,7 +7,7 @@
 
 void stdin_prompt() {
     getcwd(cwd, sizeof(cwd));
-    printf(" %s%s$%s ", KGRN, cwd, KNRM);
+    printf("%s%s%s$%s ", KYEL, cwd, KBLU, KNRM);
 }
 
 char* read_in() {
